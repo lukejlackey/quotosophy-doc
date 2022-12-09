@@ -15,7 +15,7 @@ export default function Index() {
             </Typography>
             <Typography variant="h2" color="secondary">
                 QUOTOSOPHY API
-                <Chip label="v.1.0" size="small" sx={{              
+                <Chip label="v.0.1" size="small" sx={{              
                     verticalAlign: 'top',
                     backgroundColor: indigo[900],
                     color: 'white',

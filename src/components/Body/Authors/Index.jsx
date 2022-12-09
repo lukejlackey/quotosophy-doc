@@ -1,10 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Card, Container, Typography } from '@mui/material'
 import { default as Endpoint } from "../Endpoint/Index";
+import {default as MainContext} from '../../../context/Index'
 
-export default function Index() {
+export default function Index(props) {
+
+    const { tabElements, setTabElements, scrollRef } = useContext(MainContext);
+
     return (
-        <Card sx={{
+        <Card 
+        ref={e => {
+            let TECopy = tabElements;
+            TECopy[props.refIndex] = e;
+            setTabElements(TECopy);
+            scrollRef.current[props.refIndex] = e;
+        }}
+        sx={{
             width: '75%',
             bgcolor: 'secondary.light',
             mx: 'auto',

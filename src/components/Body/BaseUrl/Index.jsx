@@ -3,10 +3,18 @@ import { Card, Typography } from '@mui/material';
 import { useContext } from 'react';
 import { default as MainContext } from "../../../context/Index";
 
-export default function Index() {
-    const { baseUrl } = useContext(MainContext);
+export default function Index(props) {
+    const { baseUrl, tabElements, setTabElements, scrollRef } = useContext(MainContext)
+
     return (
-        <Card sx={{
+        <Card 
+        ref={e => {
+            let TECopy = tabElements;
+            TECopy[props.refIndex] = e;
+            setTabElements(TECopy);
+            scrollRef.current[props.refIndex] = e;
+        }}
+        sx={{
             width: '75%',
             bgcolor: 'secondary.light',
             mx: 'auto',

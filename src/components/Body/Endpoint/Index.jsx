@@ -23,11 +23,13 @@ export default function Index(props) {
         e.preventDefault();
         setResponse(null);
         setError(false);
-        const url = baseUrl + endpoint + (reqId && id? id : '')
-        await fetch(url, {
-            method: 'GET',
+        const route = baseUrl + endpoint + (reqId && id? id : '');
+        const method = 'GET'
+        await fetch('http://localhost:8000/api/routes', {
+            method,
             headers: {
-                'x-api-key': '6f8444314a5966c8893d6ff906d4f7d1'
+                method,
+                route,
             }
         })
             .then(res => {
@@ -35,7 +37,7 @@ export default function Index(props) {
                 return res.json();
             })
             .then(res => {
-                console.log(res);
+                console.log({res});
                 setResponse(res);
                 setCalls(calls + 1)
             })

@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { default as Heading } from "./Heading/Index";
 import { default as GettingStarted } from "./GettingStarted/Index";
 import { default as BaseUrl } from "./BaseUrl/Index";
@@ -10,8 +10,6 @@ import { default as MainContext } from "../../context/Index";
 
 export default function Index() {
 
-    const {drawerWidth} = useContext(MainContext)
-
     return (
         <Box sx={{
             bgcolor: 'primary.light',
@@ -21,11 +19,11 @@ export default function Index() {
             mt: 5,
         }}>
             <Heading/>
-            <GettingStarted />
-            <BaseUrl />
-            <Quotes />
-            <SourceTexts />
-            <Authors />
+            <GettingStarted refIndex={0}/>
+            <BaseUrl refIndex={1}/>
+            <Quotes refIndex={2}/>
+            <SourceTexts refIndex={3}/>
+            <Authors refIndex={4}/>
         </Box>
     )
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Box from '@mui/material/Box';
 import AppBar from '@mui/material/AppBar';
+import Button from '@mui/material/Button';
+import Avatar from '@mui/material/Avatar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
@@ -11,11 +13,12 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { default as MainContext } from "../../context/Index";
 import { useContext } from 'react';
 import { ListItem, ListItemText, ListItemButton } from '@mui/material';
+import { Link } from "react-router-dom";
+import qLogo from '../../img/qLogo.png'
 
 export default function Navbar(props) {
 
-    const {drawerWidth} = useContext(MainContext);
-
+    const {drawerWidth, tabs, links, socialLinks, scrollToItem} = useContext(MainContext);
     const { window } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -38,10 +41,56 @@ export default function Navbar(props) {
             color: 'primary.main',
             bgcolor: 'secondary.light',
         }}>
-            {['Quotes', 'Source Texts', 'Authors'].map((text, index) => (
+            {tabs.map((text, index) => (
             <ListItem key={index} disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={() => scrollToItem(index)}>
                     <ListItemText primary={text} />
+                </ListItemButton>
+            </ListItem>
+            ))}
+        </List>
+        <Divider />
+        <Toolbar sx={{
+            bgcolor: 'secondary.main',
+            color: 'white'
+        }}>
+            <Typography variant="h5" color="secondary.light">
+                Links
+            </Typography>
+        </Toolbar>
+        <Divider />
+        <List sx={{
+            color: 'primary.main',
+            bgcolor: 'secondary.light',
+        }}>
+            {links.map((linkItem, index) => {
+                const tag = linkItem['link'][0] === '/' ? Link : 'a';
+                return (
+            <ListItem key={linkItem['name']} disablePadding component={tag} href={tag === 'a'? linkItem['link'] : ''} to={{pathname: linkItem['link']}}>
+                <ListItemButton sx={{color: 'primary.main'}}>
+                    <ListItemText primary={linkItem['name']} />
+                </ListItemButton>
+            </ListItem>
+            )})}
+        </List>
+        <Divider />
+        <Toolbar sx={{
+            bgcolor: 'secondary.main',
+            color: 'white'
+        }}>
+            <Typography variant="h5" color="secondary.light">
+                Connect
+            </Typography>
+        </Toolbar>
+        <Divider />
+        <List sx={{
+            color: 'primary.main',
+            bgcolor: 'secondary.light',
+        }}>
+            {socialLinks.map((linkItem, index) => (
+            <ListItem key={linkItem['name']} disablePadding component={'a'} href={linkItem['link']} target="_blank">
+                <ListItemButton sx={{color: 'primary.main'}}>
+                    <ListItemText primary={linkItem['name']} />
                 </ListItemButton>
             </ListItem>
             ))}
@@ -71,8 +120,8 @@ export default function Navbar(props) {
                 >
                     <MenuIcon />
                 </IconButton>
-                <Typography variant="h4" noWrap component="div" >
-                    QUOTOSOPHY
+                <Typography variant="h4" noWrap component={Link} to='/' color={'white'} sx={{textDecoration: 'none', display: 'flex', gap: 1, alignItems: 'center'}}>
+                    <Avatar src={qLogo} variant="square"></Avatar>QUOTOSOPHY
                 </Typography>
                 </Toolbar>
             </AppBar>

@@ -1,11 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import { Box, Typography, Link } from '@mui/material'
 import {LinkedIn, GitHub} from '@mui/icons-material';
-import { default as MainContext } from "../../context/Index";
 
 export default function Index() {
-
-  const {drawerWidth} = useContext(MainContext);
 
   return (
     <Box sx={{
@@ -25,7 +22,10 @@ export default function Index() {
       </Link>
       <Link href="https://www.linkedin.com/in/lukejlackey/" target="_blank" color='secondary'>
         <LinkedIn/>
-      </Link>
+      </Link>      
+      <Typography variant="body1">
+        Questions? Email <Link color='inherit' href='mailto:support@quotosophy.com'>support@quotosophy.com</Link>
+      </Typography>
     </Box>
   )
 }
