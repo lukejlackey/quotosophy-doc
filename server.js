@@ -12,10 +12,10 @@ const client = new aws.SecretsManagerClient({
 let getSecret = async () => {
     try {
         let response = await client.send(
-        new aws.GetSecretValueCommand({
-            SecretId: secret_name,
-            VersionStage: "AWSCURRENT",
-        })
+            new aws.GetSecretValueCommand({
+                SecretId: secret_name,
+                VersionStage: "AWSCURRENT",
+            })
         );
         return JSON.parse(response.SecretString).quotosophyKey;
     } catch (error) {
@@ -31,7 +31,7 @@ const corsOptions = {
 const app = express();
 
 app.use(cors(corsOptions));
-app.use( express.json() );
+app.use(express.json());
 
 app.get('/api/routes', async (req, res) => {
     const { route, method } = req.headers;
