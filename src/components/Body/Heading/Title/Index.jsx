@@ -2,12 +2,13 @@ import React from 'react'
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
+import indigo from '@mui/material/colors/indigo';
 
 export default function Index() {
     return (
         <Container sx={{
             padding: 1,
-            color: 'primary.main',
+            color: indigo[900],
         }}>
             <Typography
                 variant="h4"
@@ -20,7 +21,7 @@ export default function Index() {
                 color='secondary.dark'
                 sx={{
                     WebkitTextStrokeWidth: '1px',
-                    WebkitTextStrokeColor: 'black',
+                    WebkitTextStrokeColor: indigo[900],
                 }}
             >
                 QUOTOSOPHY <Box component='span' style={{ color: 'white' }}>API</Box>
