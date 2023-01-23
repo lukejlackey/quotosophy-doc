@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import { useContext } from 'react';
-import { default as MainContext } from "../../../../context/Index";
+import MainContext from "../../../../../../context/Index";
 
 export default function Index() {
     const { baseUrl } = useContext(MainContext)

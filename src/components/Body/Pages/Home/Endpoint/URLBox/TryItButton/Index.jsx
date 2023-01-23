@@ -4,7 +4,7 @@ import EndpointContext from '../../context/Index'
 
 export default function Index() {
 
-    const { calls, setCalls, callLimit, setResponse, setError, baseUrl, endpoint, reqId, id, } = useContext(EndpointContext);
+    const { calls, setCalls, callLimit, setLoading, setResponse, setError, baseUrl, endpoint, reqId, id, } = useContext(EndpointContext);
 
     const handleClick = async (e) => {
         if (calls > callLimit) {
@@ -13,6 +13,7 @@ export default function Index() {
             return
         }
         e.preventDefault();
+        setLoading(true);
         setResponse(null);
         setError(false);
         const route = baseUrl + endpoint + (reqId && id ? id : '');
@@ -29,11 +30,14 @@ export default function Index() {
             })
             .then(res => {
                 console.log({ res });
+                setLoading(false);
                 setResponse(res);
                 setCalls(calls + 1);
             })
             .catch(err => {
                 console.error(err);
+                setLoading(false);
+                setResponse(err);
                 setError(true);
             });
     }

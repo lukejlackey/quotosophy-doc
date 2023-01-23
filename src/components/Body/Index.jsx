@@ -1,20 +1,23 @@
-import React from 'react'
-import Box from '@mui/material/Box';
-import Heading from "./Heading/Index";
-import Tabs from './Tabs/Index'
+import React, { useContext } from 'react'
+import Box from '@mui/material/Box'
+import Pages from './Pages/Index'
+import Footer from './Footer/Index'
+import MainContext from '../../context/Index'
 
 export default function Index() {
 
+    const { drawerWidth } = useContext(MainContext);
+
     return (
-        <Box sx={{
-            bgcolor: 'primary.light',
-            py: 3,
-            px: { xs: 0, sm: 1, md: 1, lg: 2, xl: 3 },
-            flexGrow: 1,
-            mt: 5,
-        }}>
-            <Heading />
-            <Tabs />
+        <Box
+            sx={{
+                height: '100vh',
+                width: { sm: `calc(100% - ${drawerWidth}px)` },
+                marginLeft: { sm: `${drawerWidth}px` },
+            }}
+        >
+            <Pages />
+            <Footer />
         </Box>
     )
 }

@@ -2,14 +2,8 @@ import { Box, CssBaseline } from '@mui/material';
 import MainContext from './context/Index';
 import NavBar from './components/NavBar/Index'
 import Body from './components/Body/Index';
-import PricingPage from './components/PricingPage/Index';
-import APIKeyPage from './components/APIKeyPage/Index';
-import ResetAPIKey from './components/ResetAPIKey/Index';
-import Footer from './components/Footer/Index';
 import React, { useState, useRef, useEffect, useContext } from 'react';
 import {
-  Routes,
-  Route,
   useMatch,
   useNavigate,
 } from "react-router-dom";
@@ -55,20 +49,7 @@ function App() {
         >
           <Box>
             <NavBar />
-            <Box
-              sx={{
-                height: '100vh',
-                width: { sm: `calc(100% - ${context.drawerWidth}px)` },
-                marginLeft: { sm: `${context.drawerWidth}px` },
-              }}>
-              <Routes>
-                <Route path="/" element={<Body />} />
-                <Route path="/subscribe" element={<PricingPage />} />
-                <Route path="/recover" element={<APIKeyPage />} />
-                <Route path="/reset" element={<ResetAPIKey />} />
-              </Routes>
-              <Footer />
-            </Box>
+            <Body />
           </Box>
         </MainContext.Provider>
       </Box>

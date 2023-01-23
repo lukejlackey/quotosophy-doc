@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
-import MainContext from "../../../context/Index";
+import CircularProgress from '@mui/material/CircularProgress';
+import MainContext from "../../../../../context/Index";
 import EndpointContext from './context/Index';
 import URLBox from './URLBox/Index';
 import Description from './Description/Index';
@@ -13,6 +14,7 @@ export default function Index(props) {
     let { endpoint, desc, reqId } = props;
     endpoint = `/${endpoint}`;
 
+    const [loading, setLoading] = useState(false);
     const [response, setResponse] = useState(null);
     const [error, setError] = useState(false);
     const [id, setId] = useState(1);
@@ -26,6 +28,8 @@ export default function Index(props) {
                 endpoint,
                 desc,
                 reqId,
+                loading,
+                setLoading,
                 response,
                 setResponse,
                 error,
@@ -38,6 +42,9 @@ export default function Index(props) {
         >
             <URLBox />
             <Description />
+            {
+                loading ? <CircularProgress color='primary' sx={{ mx: 'auto' }} /> : ''
+            }
             {
                 response !== null ? <Response /> : ''
             }
