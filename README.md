@@ -43,30 +43,44 @@ The app is currently deployed on an AWS EC2 instance.
 
 ## 📷 Screenshots <a name = "screenshots"></a>
 
+<div align="center">
 <h3 align="center">Home Page (Desktop)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/homeW.png?raw=true" alt="Home Page (Desktop)">
+</div>
 
+<div align="center">
 <h3 align="center">Endpoint Demo (Desktop)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/endpointW.png?raw=true" alt="Endpoint Demo (Desktop)">
+</div>
 
+<div align="center">
 <h3 align="center">Pricing Table (Desktop)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/priceTable.png?raw=true" alt="Pricing Table (Desktop)">
+</div>
 
+<div align="center">
 <h3 align="center">Home Page (Mobile)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/homeM.png?raw=true" alt="Home Page (Mobile)">
+</div>
 
+<div align="center">
 <h3 align="center">Home Page w/ Drawer Open (Mobile)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/homeMDrawer.png?raw=true" alt="Home Page w/ Drawer (Mobile)">
+</div>
 
+<div align="center">
 <h3 align="center">Endpoint Demo (Mobile)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/endpointM.png?raw=true" alt="Endpoint Demo (Mobile)">
+</div>
 
+<div align="center">
 <h3 align="center">Recovering API Key (Mobile)</h3>
 
 <img src="https://github.com/lukejlackey/quotosophyDocsImages/blob/main/recoverM.png?raw=true" alt="Recovering API Key (Mobile)">
+</div>
