@@ -4,7 +4,7 @@ import EndpointContext from '../../context/Index'
 
 export default function Index() {
 
-    const { calls, setCalls, callLimit, setLoading, setResponse, setError, baseUrl, endpoint, reqId, id, } = useContext(EndpointContext);
+    const { invokeLambda, calls, setCalls, callLimit, setLoading, setResponse, setError, baseUrl, endpoint, reqId, id, } = useContext(EndpointContext);
 
     const handleClick = async (e) => {
         if (calls > callLimit) {
@@ -18,11 +18,11 @@ export default function Index() {
         setError(false);
         const route = baseUrl + endpoint + (reqId && id ? id : '');
         const method = 'GET'
-        await fetch('http://localhost:8000/api/routes', {
+        invokeLambda({
             method,
-            headers: {
-                method,
-                route,
+            route,
+            data: {
+                data: null
             }
         })
             .then(res => {

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import Typography from '@mui/material/Typography'
+import MainContext from '../../../../context/Index'
 
 export default function Index() {
+
+    const { invokeLambda } = useContext(MainContext);
 
     const queryParams = new URLSearchParams(window.location.search);
     const token = queryParams.get("token");
@@ -12,15 +15,14 @@ export default function Index() {
     const [success, setSuccess] = useState(null);
 
     useEffect(() => {
+        const route = 'https://api.quotosophy.com/reset'
         const method = 'PUT'
-        fetch('http://localhost:8000/api/key/reset', {
+        invokeLambda({
             method,
-            headers: {
-                method,
-                headers: {
-                    token,
-                    cid,
-                }
+            route,
+            data: {
+                token,
+                cid,
             },
         })
             .then(res => {

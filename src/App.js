@@ -7,6 +7,7 @@ import {
   useMatch,
   useNavigate,
 } from "react-router-dom";
+import invokeLambda from './invokeLambda';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
             tabElements,
             setTabElements,
             scrollToItem,
+            invokeLambda,
           }}
         >
           <Box>

@@ -1,12 +1,15 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
 import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import FormHelperText from '@mui/material/FormHelperText';
 import SendIcon from '@mui/icons-material/Send';
+import MainContext from '../../../../../../context/Index'
 
 export default function Index() {
+
+    const { invokeLambda } = useContext(MainContext);
 
     const [emailInput, setEmailInput] = useState(null);
     const [recovered, setRecovered] = useState(null);
@@ -16,11 +19,12 @@ export default function Index() {
         if (!(/\S+@\S+\.\S+/.test(emailInput))) {
             setRecovered(false);
         } else {
+            const route = 'https://api.quotosophy.com/recover'
             const method = 'GET'
-            await fetch('http://localhost:8000/api/key/recover', {
+            invokeLambda({
                 method,
-                headers: {
-                    method,
+                route,
+                data: {
                     email: emailInput
                 },
             })
